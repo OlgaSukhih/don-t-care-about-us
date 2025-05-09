@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>They Don't Care About Us</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      font-size: 2.5em;
+    }
+    h2 {
+      color: #ff69b4;
+      text-align: center;
+      font-size: 2em;
+      margin: 0.5em 0;
+    }
+    a {
+      color: #66ccff;
+      font-size: 1.2em;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    .container {
+      display: flex;
+      align-items: flex-start;
+      max-width: 1000px;
+    }
+    .image-container {
+      flex: 1;
+      padding: 10px;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    .lyrics-container {
+      flex: 2;
+      padding: 10px;
+    }
+    .choice {
+      background-color: #333;
+      color: white;
+      padding: 5px 10px;
+      margin: 3px;
+      border-radius: 15px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .choice.correct {
+      background-color: green;
+    }
+    .choice.incorrect {
+      background-color: red;
+    }
+    button {
+      background-color: #444;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>Listen &amp; Sing</h1>
+  <a href="https://t.me/joinandgetinspired" target="_blank">Join &amp; Get Inspired</a>
+  <h2>They Don't Really Care About Us</h2>
+  <audio controls>
+    <source src="Michael Jackson - They Don't Care About Us.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="container">
+    <div class="image-container">
+      <img src="20250509_1525_Человек в шляпе_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="Dancer Illustration">
+    </div>
+    <div class="lyrics-container">
+      <p>And tell me, what has become of my <span class="choice" data-answer="true">rights</span>/<span class="choice">fights</span>?</p>
+      <p>Am I <span class="choice" data-answer="true">invisible</span>/<span class="choice">invincible</span> 'cause you ignore me?</p>
+      <p>Your proclamation promised me free <span class="choice" data-answer="true">liberty</span>/<span class="choice">dignity</span> now</p>
+      <p>I'm tired of being the victim of <span class="choice" data-answer="true">shame</span>/<span class="choice">blame</span></p>
+      <p>They're throwing me in a class with a bad <span class="choice" data-answer="true">name</span>/<span class="choice">fame</span></p>
+      <p>I can't believe this is the land from which I <span class="choice" data-answer="true">came</span>/<span class="choice">claim</span></p>
+      <button onclick="alert('Translation will be shown here.')">Translate</button>
+      <button onclick="alert('Let\'s discuss: What social issues does the song address? Do you agree with the message?')">Let's Discuss</button>
+    </div>
+  </div>
+  <script>
+    const choices = document.querySelectorAll('.choice');
+    choices.forEach(choice => {
+      choice.addEventListener('click', () => {
+        const siblings = choice.parentElement.querySelectorAll('.choice');
+        siblings.forEach(sib => {
+          sib.classList.remove('correct', 'incorrect');
+          sib.style.pointerEvents = 'none';
+        });
+        if (choice.hasAttribute('data-answer')) {
+          choice.classList.add('correct');
+        } else {
+          choice.classList.add('incorrect');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
