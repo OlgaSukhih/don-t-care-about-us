@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>They Don't Care About Us</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      font-size: 2.5em;
+    }
+    h2 {
+      color: #ff69b4;
+      text-align: center;
+      font-size: 2em;
+      margin: 0.5em 0;
+    }
+    a {
+      color: #66ccff;
+      font-size: 1.2em;
+      text-decoration: none;
+      margin-bottom: 20px;
+    }
+    .container {
+      display: flex;
+      align-items: flex-start;
+      max-width: 1000px;
+    }
+    .image-container {
+      flex: 1;
+      padding: 10px;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+    }
+    .lyrics-container {
+      flex: 2;
+      padding: 10px;
+    }
+    .choice {
+      background-color: #333;
+      color: white;
+      padding: 5px 10px;
+      margin: 3px;
+      border-radius: 15px;
+      cursor: pointer;
+      display: inline-block;
+    }
+    .choice.correct {
+      background-color: #6ba36b; /* приглушённый зелёный */
+    }
+    .choice.incorrect {
+      background-color: #b76e79; /* приглушённый розовый */
+    }
+  </style>
+</head>
+<body>
+  <h1>Listen &amp; Sing</h1>
+  <a href="https://t.me/joinandgetinspired" target="_blank">Join &amp; Get Inspired</a>
+  <h2>They Don't Really Care About Us</h2>
+  <audio controls>
+    <source src="Michael Jackson - They Don't Care About Us.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="container">
+    <div class="image-container">
+      <img src="20250509_1525_Человек в шляпе_remix_01jtt96mkbf5psd7cr0jy05khq-Photoroom.png" alt="Dancer Illustration">
+    </div>
+    <div class="lyrics-container">
+
+      <!-- Тестовая строчка -->
+      <p><span class="choice" data-answer="true">Skinhead</span>/<span class="choice">Baldhead</span>, <span class="choice" data-answer="true">dead head</span>/<span class="choice">dread head</span>, everybody gone <span class="choice" data-answer="true">mad</span>/<span class="choice">bad</span></p>
+      <p>All I wanna <span class="choice" data-answer="true">say</span>/<span class="choice">stay</span> is that</p>
+      <p>They don't really <span class="choice" data-answer="true">care</span>/<span class="choice">dare</span> about <span class="choice" data-answer="true">us</span>/<span class="choice">fuss</span></p>
+      <p>Skinhead, dead head, everybody gone bad</p>
+      <p>Trepidation, speculation, everybody, allegation</p>
+      <p>In the suit, on the news, everybody, dog food</p>
+      <p>Black man, blackmail, throw the brother in jail</p>
+      <p>All I wanna say is that</p>
+      <p>They don't really care about us</p>
+      <p>All I wanna say is that</p>
+      <p>They don't really care about us</p>
+
+    </div>
+  </div>
+  <script>
+    const choices = document.querySelectorAll('.choice');
+    choices.forEach(choice => {
+      choice.addEventListener('click', () => {
+        const siblings = choice.parentElement.querySelectorAll('.choice');
+        siblings.forEach(sib => {
+          sib.classList.remove('correct', 'incorrect');
+          sib.style.pointerEvents = 'none';
+        });
+        if (choice.hasAttribute('data-answer')) {
+          choice.classList.add('correct');
+        } else {
+          choice.classList.add('incorrect');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
